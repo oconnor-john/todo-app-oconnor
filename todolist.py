@@ -4,6 +4,8 @@ A simple command-line To-Do List application that allows users to manage tasks.
 """
 
 from typing import List
+import os
+import platform
 
 
 class Todo:
@@ -64,6 +66,17 @@ class Todo:
                 print(f"{i}. {task}")
 
 
+
+def clear_terminal():
+    system = platform.system()
+    if system == 'Windows':
+        os.system('cls')
+    elif system == 'Linux' or system == 'Darwin':
+        os.system('clear')
+    else:
+        print("Operating system not supported.")
+
+
 def main():
     """Run the interactive To-Do list application.
 
@@ -74,6 +87,7 @@ def main():
     todo = Todo()
 
     while True:
+        clear_terminal()
         print("\nOptions:")
         print("1. Add Task")
         print("2. Delete Task")
